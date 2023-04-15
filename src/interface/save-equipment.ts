@@ -1,8 +1,7 @@
 export interface SaveEquipments {
-    id:number;
-    name: string;
-    lastName: string;
-    serial: number;
-    place?: string;
+    type_eq: string;
+    color: string;
+    mark: string;
+    serial: string;
   }
   

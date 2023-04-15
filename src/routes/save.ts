@@ -1,11 +1,7 @@
 import express  from "express";
-
+import {saveEquipmentCtrl} from '../controllers/save';
 const router = express.Router();
 
-router.post('/', (req, res) =>{
-    const {name,lastName,serial,place} = req.body;
-
-    const newRecord = 
-});
+router.post('/', saveEquipmentCtrl);
 
 export default router;
