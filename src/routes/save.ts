@@ -1,7 +1,7 @@
-import express  from "express";
-import {saveEquipmentCtrl} from '../controllers/save';
-const router = express.Router();
+import { Router } from "express";
+import { saveEquipmentCtrl } from "../controllers/save";
+const router = Router();
 
-router.post('/', saveEquipmentCtrl);
+router.post("/", saveEquipmentCtrl);
 
-export default router;
+export { router };
