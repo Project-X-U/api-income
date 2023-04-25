@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { userCtrl } from "../controllers/save-user";
+import { saveUserCtrl } from "../controllers/save-user";
+import { checkJwt } from "../middleware/session";
 
 const router = Router();
 
-router.post("/saveUser", userCtrl);
+router.post("/", checkJwt, saveUserCtrl);
 
 export { router };

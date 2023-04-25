@@ -3,6 +3,6 @@ import { registrationEquipmentCtrl } from "../controllers/registration-equipment
 
 const router = Router();
 
-router.post("/registration", registrationEquipmentCtrl);
+router.post("/", registrationEquipmentCtrl);
 
 export { router };

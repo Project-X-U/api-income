@@ -1,7 +1,7 @@
 import { NextFunction, Response } from "express";
 import { RequestExt } from "../interface/req.ext";
 import { verifyToken } from "../utils/jwt.handle";
-import { response, responseError } from "../utils/response.handle";
+import { handleHttp } from "../utils/response.handle";
 import responseApi from "../lang/response-api";
 
 export const checkJwt = (
@@ -15,25 +15,13 @@ export const checkJwt = (
     const isUser = verifyToken(`${jwt}`) as { id: string };
 
     if (!isUser) {
-      return response(
-        responseError({
-          statusCode: 401,
-          message: "",
-        }),
-        res
-      );
+      return handleHttp(res, 401, responseApi.general.errorToken);
     } else {
       req.user = isUser;
       next();
     }
   } catch (e) {
-    return response(
-      responseError({
-        statusCode: 500,
-        message: responseApi.general.serverError,
-        data: e,
-      }),
-      res
-    );
+    console.log({ e });
+    return handleHttp(res, 400, responseApi.general.errorSession);
   }
 };
