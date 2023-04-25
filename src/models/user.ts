@@ -1,8 +1,12 @@
-import {Schema, Types, model, Model} from 'mongoose';
-import {SaveUsers} from '../interface/save-users';
+import { Schema, Types, model, Model } from 'mongoose';
+import { SaveUsers } from '../interface/save-users';
 
 const UserSheme = new Schema<SaveUsers>(
     {
+        identification: {
+            type: Number,
+            required: true,
+        },
         name_user: {
             type: String,
             required: true,
@@ -31,14 +35,12 @@ const UserSheme = new Schema<SaveUsers>(
             type: Boolean,
             required: true,
         },
-        
     },
     {
         timestamps: true,
         versionKey: false,
     }
 );
-
 
 const User = model("user", UserSheme);
 
