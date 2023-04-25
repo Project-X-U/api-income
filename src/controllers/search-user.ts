@@ -16,7 +16,6 @@ const searchByIdentificationCtrl = async ({ params }: Request, res: Response) =>
                 message: responseApi.user.notFound
             })
         }
-        res.send(response);
     } catch (e) {
         return response(
             responseError({
