@@ -13,4 +13,9 @@ export default {
     successSave: "Datos creados correctamente",
     inactive: "El estudiante se encuentra inactivo",
   },
+  equipment: {
+    errorSave: "Error al guardar los datos",
+    successSave: "Datos creados correctamente",
+    notFound: "No se encontraron datos disponibles",
+  },
 };
