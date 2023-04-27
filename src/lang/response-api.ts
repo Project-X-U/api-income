@@ -15,7 +15,9 @@ export default {
   },
   equipment: {
     errorSave: "Error al guardar los datos",
+    errorList: "Error al listar los datos",
     successSave: "Datos creados correctamente",
+    successList: "Datos listados correctamente",
     notFound: "No se encontraron datos disponibles",
   },
 };

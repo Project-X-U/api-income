@@ -1,8 +1,12 @@
 import { Schema, Types, model, Model } from "mongoose";
-import { SaveRegistrationEquipment } from "../interface/equipment";
+import { Equipment } from "../interface/equipment";
 
-const RegistrationEquipmentSheme = new Schema<SaveRegistrationEquipment>(
+const EquipmentSheme = new Schema<Equipment>(
   {
+    type_eq: {
+      type: String,
+      required: true,
+    },
     mark: {
       type: String,
       required: true,
@@ -26,9 +30,6 @@ const RegistrationEquipmentSheme = new Schema<SaveRegistrationEquipment>(
   }
 );
 
-const RegistrationEquipment = model(
-  "registrationEquipment",
-  RegistrationEquipmentSheme
-);
+const Equipment = model("equipment", EquipmentSheme);
 
-export default RegistrationEquipment;
+export default Equipment;

@@ -1,14 +1,24 @@
-import { SaveRegistrationEquipment } from "../interface/equipment";
-import RegistrationEquipmentModel from "../models/equiment";
+import { Equipment } from "../interface/equipment";
+import EquipmentModel from "../models/equiment";
 
-const saveEquipment = async (item: SaveRegistrationEquipment) => {
+const saveEquipment = async (item: Equipment) => {
   try {
-    const responseRegis = await RegistrationEquipmentModel.create(item);
+    const responseRegis = await EquipmentModel.create(item);
     return responseRegis;
   } catch (e) {
     console.log(e);
-    throw new Error("Error registrationEquipment");
+    throw new Error("Error saveEquipment");
   }
 };
 
-export { saveEquipment };
+const getEquipment = async (id: string) => {
+  try {
+    const responseItem = await EquipmentModel.find({ user_id: id });
+    return responseItem;
+  } catch (e) {
+    console.log(e);
+    throw new Error("Error getEquipment");
+  }
+};
+
+export { saveEquipment, getEquipment };
