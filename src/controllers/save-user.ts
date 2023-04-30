@@ -1,21 +1,20 @@
 import { Request, Response } from "express";
 import { saveUser } from "../services/user";
-import { response, responseError } from "../utils/response.handle";
+import { handleHttp } from "../utils/response.handle";
 import responseApi from "../lang/response-api";
 
-const userCtrl = async ({ body }: Request, res: Response) => {
+const saveUserCtrl = async ({ body }: Request, res: Response) => {
   try {
-    const response = await saveUser(body);
-    res.send(response);
+    const save = await saveUser(body);
+
+    if (!save) {
+      return handleHttp(res, 400, responseApi.user.errorSave);
+    }
+
+    return handleHttp(res, 201, responseApi.user.successSave);
   } catch (e) {
-    return response(
-      responseError({
-        statusCode: 500,
-        message: responseApi.general.serverError,
-        data: e,
-      }),
-      res
-    );
+    console.log("Error userCtrl", e);
+    return handleHttp(res, 500, responseApi.general.serverError);
   }
 };
-export { userCtrl };
+export { saveUserCtrl };

@@ -1,31 +1,21 @@
 import { Request, Response } from "express";
-import { response, responseError } from "../utils/response.handle";
+import { handleHttp } from "../utils/response.handle";
 import responseApi from "../lang/response-api";
-import { findUser } from '../services/search-user';
+import { findUser } from "../services/search-user";
 
-const searchByIdentificationCtrl = async ({ params }: Request, res: Response) => {
-    try {
-        const { id } = params;
+const searchByIdentificationCtrl = async ({ body }: Request, res: Response) => {
+  try {
+    const { identification } = body;
 
-        const user = await findUser(id);
-        if (user) {
-            res.json(user);
-        } else {
-            res.status(404).json({
-                statusCode: 404,
-                message: responseApi.user.notFound
-            })
-        }
-    } catch (e) {
-        return response(
-            responseError({
-                statusCode: 500,
-                message: responseApi.general.serverError,
-                data: e,
-            }),
-            res
-        );
+    if (typeof identification === "undefined") {
+      return handleHttp(res, 400, responseApi.general.notFound);
     }
+
+    await findUser({ identification }, res);
+  } catch (e) {
+    console.log("Error searchByIdentificationCtrl", e);
+    return handleHttp(res, 500, responseApi.general.serverError);
+  }
 };
 
 export { searchByIdentificationCtrl };

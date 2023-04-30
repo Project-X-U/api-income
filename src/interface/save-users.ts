@@ -6,5 +6,5 @@ export interface SaveUsers {
   email: string;
   program: string;
   schedule: string;
-  state: boolean;
+  state: String;
 }
