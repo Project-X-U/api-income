@@ -20,4 +20,7 @@ export default {
     successList: "Datos listados correctamente",
     notFound: "No se encontraron datos disponibles",
   },
+  email: {
+    success: "El correo se ha enviado correctamente",
+  },
 };

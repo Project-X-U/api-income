@@ -19,10 +19,10 @@ const saveEquipmentCtrl = async ({ body }: Request, res: Response) => {
 
 const getEquipmentCtrl = async ({ params }: Request, res: Response) => {
   try {
-    const id = params;
+    const id = params.id;
     const data = await getEquipment(String(id));
     console.log(data);
-    if (!data || data.length === 0) {
+    if (!data) {
       return handleHttp(res, 400, responseApi.equipment.errorList);
     }
 
