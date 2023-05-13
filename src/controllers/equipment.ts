@@ -21,7 +21,6 @@ const getEquipmentCtrl = async ({ params }: Request, res: Response) => {
   try {
     const id = params.id;
     const data = await getEquipment(String(id));
-    console.log(data);
     if (!data) {
       return handleHttp(res, 400, responseApi.equipment.errorList);
     }
