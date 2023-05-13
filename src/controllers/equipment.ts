@@ -26,7 +26,7 @@ const getEquipmentCtrl = async ({ params }: Request, res: Response) => {
       return handleHttp(res, 400, responseApi.equipment.errorList);
     }
 
-    return handleHttp(res, 201, responseApi.equipment.successList, data);
+    return handleHttp(res, 200, responseApi.equipment.successList, data);
   } catch (e) {
     console.log("Error getEquipmentCtrl", e);
     return handleHttp(res, 500, responseApi.general.serverError);
