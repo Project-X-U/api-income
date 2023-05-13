@@ -3,11 +3,11 @@ import ejs from "ejs";
 
 const createTrans = () => {
   const transport = nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
+    host: "smtp.gmail.com",
+    port: 465,
     auth: {
-      user: "859b2a05e2b729",
-      pass: "4d312ccd29ffb1",
+      user: "sebastianrobayog@gmail.com",
+      pass: "zoaaxrfavpmpctvw",
     },
   });
   return transport;
@@ -18,7 +18,7 @@ export const sendMail = async (item: any) => {
 
   const transporter = createTrans();
   const info = await transporter.sendMail({
-    from: "juan@example.com",
+    from: "sebastianrobayog@gmail.com",
     to: item,
     subject: "Correo de prueba",
     html: template,
