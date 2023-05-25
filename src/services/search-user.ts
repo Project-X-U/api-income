@@ -16,7 +16,7 @@ const findUser = async ({ identification }: Auth, res: Response) => {
       return handleHttp(res, 403, responseApi.user.inactive);
     }
 
-    const token = generateToken(checkIs.identification, "1h");
+    const token = generateToken(checkIs.identification, "10m");
     const data: any = {
       token,
       user: checkIs,

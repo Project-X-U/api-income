@@ -8,7 +8,6 @@ db().then(() => {
   console.log("Conexion ready");
 });
 
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT} 🚀`);
 });
